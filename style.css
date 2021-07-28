@@ -1,0 +1,194 @@
+:root {
+    --lilac: #B08EA2;
+    --blue: #3E517A;
+    --offwhite: #FFFCE8;
+    --magenta: #9E1946;
+    --peach: #E07A5F;
+}
+
+@font-face {
+    font-family: "Raleway";
+    src: url("/fonts/Raleway-Regular.ttf");
+}
+
+/* For mobile phones: */
+[class*="col-"] {
+    width: 100%;
+  }
+
+@media only screen and (min-width: 768px) {
+    /*For desktop*/
+    .col-1 {width: 45%;}
+    .col-2 {width: 100%}
+}
+
+.responsive {
+    width: 50%;
+    max-width: 250px;
+    height: auto;
+}
+
+
+body {
+    background-color: var(--blue);
+    font-family: "Raleway", Arial;
+    padding: 0px;
+    margin: 0px;
+    font-size: 1em;
+    width: 100%;
+    height: 100%;
+    color: var(--offwhite);
+}
+
+h1 {
+    text-align: center;
+    color:var(--peach);
+    font-size: 4vw;
+}
+
+nav li{
+    display: inline-block;
+}
+
+h2 {
+    color:var(--peach);
+    margin-left: 20px;
+}
+
+h3 {
+    color:var(--lilac);
+    margin-left: 20px;
+}
+
+caption {
+    text-align: left;
+}
+
+a {
+    color:var(--lilac);
+    text-decoration: none;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+table, tr, th, td{
+    border: 1px solid white;
+    border-collapse: collapse;
+    padding: 15px;
+    text-align: left;
+}
+
+.flex-container {
+    display:flex;
+    animation-duration: 4s;
+    animation-name: slidein;
+    justify-content: center;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+@keyframes slidein {
+    from {
+        margin-right: 150%;
+    }
+    to {
+        margin-right: 0%;
+    }
+}
+
+section {
+    padding-left: 20px;
+}
+
+#aboutMe1 {
+    display:grid;
+    grid-template-columns: 0.5fr 1fr;
+
+}
+
+#aboutMe1>img {
+    margin: 0 auto;
+}
+
+#aboutMe1 p {
+    width: 100%;
+    padding-right: 5em;
+    position: relative;
+    align-items: center;
+    font-size: 2vw;
+    line-height: 1.5;
+}
+
+#typewriter {
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 5s steps(40, end)
+}
+
+@keyframes typing {
+    from {width: 0}
+    to {width: 100%}
+}
+
+.flex-container > li {
+    font-size: 30px;
+    text-align: center;
+    padding: 5px 5px 5px 5px;
+    margin-left: 5%;
+    margin-right: 5%;
+    transition: width 1s, height 1s;
+    border: solid white;
+    flex-grow: 1;
+}
+
+.flex-container > li:hover {
+    font-size: 250%;
+    background-color: var(--offwhite);
+}
+
+#Projects {
+    margin-left: 20px;
+    margin-right: 20px;
+    /* grid-template-columns: 1fr 1fr; */
+}
+
+#Projects>article {
+    /* width: 1fr; */
+    padding: 10px 10px 10px 10px;
+    /* overflow-wrap: normal; */
+    display: inline-block;
+}
+
+details {
+    margin-left: 20px;
+}
+
+#summary-content {
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#summary-content * {
+    flex: 1;
+}
+
+audio {
+    width: 75%;
+}
+
+
+footer {
+    text-align: center;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+}

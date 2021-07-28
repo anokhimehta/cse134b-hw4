@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Part 3</title>
+        <script type="text/javascript" src="blog.js"></script>
+        <script type="text/javascript" src="DOMPurify-main/dist/purify.min.js"></script>
+    </head>
+
+    <body>
+        <h1>Blog Posts</h1>
+        <br>
+        <button id="newPostBtn">Add Blog Post</button>
+
+        <p>Current Blog Posts</p>
+        <ul id="postList"></ul>
+
+        <dialog id="addPostDialog">
+            <form>
+                <label for="title">Title:</label>
+                <input type="text" id="title"></input><br>
+                <label for="date">Date: </label>
+                <input type="text" id="date"></input><br>
+                <label for="summary">Summary: </label>
+                <input type="text" id="summary"></input><br>
+                <input type="button" id="saveBtn" value="Save">
+                <input type="button" id="cancelBtn" value="Cancel">
+            </form>
+        </dialog>
+
+        <dialog id="editPostDialog">
+            <form>
+                <label for="editTitle">Title:</label>
+                <input type="text" id="editTitle"></input><br>
+                <label for="editDate">Date: </label>
+                <input type="text" id="editDate"></input><br>
+                <label for="editSummary">Summary: </label>
+                <input type="text" id="editSummary"></input><br>
+                <input type="button" id="editSaveBtn" value="Save">
+                <input type="button" id="editCancelBtn" value="Cancel">
+            </form>
+        </dialog>
+    </body>
+</html>

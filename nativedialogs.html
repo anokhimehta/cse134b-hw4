@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Part 1</title>
+        <script type="text/javascript" src="DOMPurify-main/dist/purify.min.js"></script>
+    </head>
+
+    <body>
+        <button id="alertBtn">Alert</button>
+        <button id="confirmBtn">Confirm</button>
+        <button id="promptBtn">Prompt</button>
+        <button id="saferPromptBtn">Safer Prompt</button>
+
+        <script>
+
+            function resetOutput() {
+                document.getElementById("result").innerHTML="";
+                console.log('reset output');
+}
+            document.getElementById("alertBtn").addEventListener("click", () => {
+                resetOutput();
+              alert("You have clicked the alert button!");
+            });
+
+            document.getElementById("confirmBtn").addEventListener("click", function() {
+                resetOutput();
+                var txt;
+                if (confirm("Do you confirm this?")) {
+                    txt = "Confirm result: true";
+                }
+                else {
+                    txt = "Confirm result: false";
+                }
+                document.getElementById("result").innerHTML=txt;    
+            });
+
+            document.getElementById("promptBtn").addEventListener("click", function() {
+                resetOutput();
+                let name = window.prompt("What is your name", "default text");
+                var result;
+                if (name == null || name == "") {
+                    result = "User didn't enter anything";
+                }
+                else {
+                    result = name;
+                }
+                let promptString = `Prompt result: ${result}`;
+                console.log(promptString);
+                document.getElementById("result").innerHTML=promptString;
+            });
+            
+            document.getElementById("saferPromptBtn").addEventListener("click", function() {
+                let dirtyName = window.prompt("What is your name", "default text");
+                let cleanName = DOMPurify.sanitize(dirtyName);
+                if (cleanName == null || cleanName == "") {
+                    result = "User didn't enter anything";
+                }
+                else {
+                    result = cleanName;
+                }
+                let promptString = `Prompt result: ${result}`;
+                console.log(promptString);
+                document.getElementById("result").innerHTML=promptString;
+            });
+
+        </script>  
+        <br>
+        <output id="result"></output>       
+    </body>
+</html>
