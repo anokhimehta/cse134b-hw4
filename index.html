@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="style.css" media="screen" type = "text/css"/>
+        <title>Anokhi's Portfolio</title>
+    </head>
+    <body>
+        <header>
+            <h1 id="welcome">Welcome to Anokhi's Portfolio!</h1>
+            <nav id="navbar">
+                <ul class="flex-container">
+                    <li><a href="#top">Home</a></li>
+                    <li><a href="#Projects">Projects</a></li>
+                    <li><a href="#ContactMe">Contact Me</a></li>
+                </ul>
+            </nav>
+        </header>
+        <hr>
+        <main>
+            <section id="aboutMe">
+                <h2>About Me</h2>
+                <div id=aboutMe1>
+                    <img src="prof_pic_3x.JPG" alt="profilePicture" class="responsive"
+                        srcset="prof_pic_2x.JPG 2x,
+                                prof_pic_1x.JPG 1x">   
+                    <div id="intro">
+                        <p id="typewriter">Hi, My name is Anokhi Mehta!</p>
+                        <p>I'm an incoming senior at UCSD studying Computer Science! I'm studying computer science because I love the great satisfaction that comes from solving
+                        interesting and unique problems.</p>
+                    </div>
+                </div>
+            </section>
+            <br>
+            <h3>Classes: </h3>
+            <section>
+                <table>
+                    <caption>These are some of my favorite classes that I've taken!</caption>
+                    <tr>
+                        <th>Class ID</th>
+                        <th>Class Name</th>
+                        <th>What I Learned</th>
+                    </tr>
+                    <tr>
+                        <td>CSE 100</td>
+                        <td>Advanced Data Structures</td>
+                        <td>High-performance data structures and supporting algorithms</td>
+                    </tr>
+                    <tr>
+                        <td>CSE 105</td>
+                        <td>Theory of Computation</td>
+                        <td>What it means to be "computable"</td>
+                    </tr>
+                    <tr>
+                        <td>CSE 110</td>
+                        <td>Software Engineering</td>
+                        <td>How to follow the agile development process in a team to create a project</td>
+                    </tr>
+                </table>
+                <h3>Here are some organizations I'm involved in right now!</h3>
+                    <ol>
+                        <li><em>Women In Computing</em> (WIC)</li>
+                        <li><em>Phi Sigma Rho</em></li>
+                        <li><em>UCSD Raas Ruckus</em>, a competitive raas-garba dance team</li>
+                    </ol>  
+                <details> 
+                    <summary id="Ruckus">Click here to learn more about what Raas Ruckus is!</summary> 
+                    <br>
+                    <div id="summary-content">
+                        <figure>
+                            <img src="Ruckus_3x.jpg" alt="Ruckus" class="responsive"
+                                srcset="Ruckus_2x.JPG 2x,
+                                        Ruckus_1x.JPG 1x">
+                            <figcaption>My dance team, <strong>Raas Ruckus</strong>, at a competition where we won second place!</figcaption>
+                        </figure>
+                        <div id="song">
+                            <p>These are some of the songs we danced to:</p>
+                            <audio controls>
+                                <source src="ruckusMix.mp3" type="audio/mp3" class="responsive">
+                                Your browser does not support the audio tag.
+                            </audio>
+                        </div>
+                        <div id="ruckus-video">
+                            <aside>Here is a video of my team winning at a competition: </aside>
+                            <video controls>
+                                <source src="ruckusVideo.MP4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                </details>
+                <details>
+                    <summary>Some programs that I have participated in include:</summary> 
+                    <ul>
+                        <li>Girls Who Code Summer Immersion Program</li>
+                        <li>Intuit WiT Mentorship Program</li>
+                    </ul>
+                </details>
+                <br><br>
+            </section>
+            <hr>
+            <h2>Projects</h2>
+            <section id="Projects">
+                <article class="col-1">
+                    <header>
+                        <h3>
+                            Project #1: Bayeats
+                        </h3>
+                    </header>
+                    <p>
+                        The first project I ever created was in the <b>Girls Who Code Summer Immersion Program</b> at Adobe. 
+                        I worked in a team of 4 girls to create a final project, an interactive website that allows 
+                        people to find local trendy food eateries in the Bay Area: 
+                    </p>
+                    <a href="https://bayeats.github.io/bayeats/bahh.html">Bay Eats Website</a>
+                    <section class="imgSection">
+                        <img src="BayEats.png" alt="BayEats" width="400"> 
+                    </section>
+                    <footer>
+                        Written by <i>Anokhi Mehta.</i>
+                    </footer>
+                </article>
+                <article class="col-1">
+                    <header>
+                        <h3>
+                            Project #2: Huffman Encoding
+                        </h3>
+                    </header>
+                    <p>
+                        In my CSE 100 class, my final project was to build a program that succesfully used huffman encoding to compress and decompress
+                         files using lossless compression. Some functions I implemented in my program were: <code>compress</code> and <code>uncompress</code>
+                    </p>
+                    <section class="imgSection">
+                        <img src="huffman.png" alt="Huffman" width="400"> 
+                    </section>
+                    <footer>
+                        Written by <i>Anokhi Mehta.</i>
+                    </footer>
+                </article>
+                <article class="col-2">
+                    <header>
+                        <h3>
+                            Project #3: Easy Bites
+                        </h3>
+                    </header>
+                    <p>
+                        As a participant in WIC's Fall Dev, I worked as a full-stack developer on my team to build a Recipe App with AnroidStudio. Other technologies and lagnuages I used include Firebase, Kotlin, and Figma
+                    </p>
+                    <section class="imgSection">
+                        <img src="EasyBites.png" alt="EasyBites" width="400"> 
+                    </section>
+                    <footer>
+                        Written by <i>Anokhi Mehta.</i>
+                    </footer>
+                </article>
+                <br>
+            
+            </section>
+            <hr>
+            <section id="ContactMe">
+                <h2>Contact Form: </h2><br>
+                <form name="contactForm">
+                    <div>
+                        <label for="firstName">First Name: </label>
+                        <input type="text" id="firstName" name="firstName"> <br><br>
+                        <label for="lastName">Last Name: </label>
+                        <input type="text" id="lastName" name="lastName"> <br><br>
+                        <label for="email">Email: </label>
+                        <input type="text" id="email" name="email"> <br><br>
+                    </div>
+                    <br>
+                    <label for="message">Write your message below:</label><br>
+                    <textarea id="message" name="message" rows="8" cols="50"></textarea>
+                    <button type="button">Submit</button>
+                </form>
+            </section>
+        </main>
+        <br>
+        <br>
+        <footer>
+            Webpage made by Anokhi Mehta for class CSE 134B at UCSD.
+        </footer>
+    </body>
+</html>

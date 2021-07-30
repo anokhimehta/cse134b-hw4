@@ -36,14 +36,6 @@ function confirmUser() {
     confirmDialogID.showModal();
 }
 
-//when prompt button pressed
-function promptUser() {
-    resetOutput();
-    let promptDialog = document.getElementById("promptCustomDialog");
-    promptDialog.showModal();
-    
-}
-
 //when user says yes to confirm
 function confirmDialog() {
     let confirmDialogID = document.getElementById("confirmCustomDialog");
@@ -58,14 +50,22 @@ function confirmCancel() {
     document.getElementById("resultTxt").innerHTML="Confirm result: false";
 }
 
+//when prompt button pressed
+function promptUser() {
+    resetOutput();
+    let promptDialog = document.getElementById("promptCustomDialog");
+    promptDialog.showModal();
+    
+}
 function promptCancel() {
-    let promptDialogID = document.getElementById("confirmCustomDialog");
+    let promptDialogID = document.getElementById("promptCustomDialog");
+    document.getElementById("resultTxt").innerHTML="Prompt result: user did not enter anything";
     promptDialogID.close();
 }
 
 function savePrompt() {
-    let promptDialogID = document.getElementById("confirmCustomDialog");
-    let promptTxt = document.getElementById("name");
-    console.log(promptTxt);
+    let promptDialogID = document.getElementById("promptCustomDialog");
+    let name = document.getElementById("name").value;
+    document.getElementById("resultTxt").innerHTML=`Prompt result: ${name}`;
     promptDialogID.close();
 }

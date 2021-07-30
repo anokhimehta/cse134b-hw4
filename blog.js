@@ -1,7 +1,5 @@
 window.addEventListener("DOMContentLoaded", init);
 
-// @include("https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.0/purify.js");
-
 let postCount = 0;
 let posts = [];
 
@@ -12,47 +10,60 @@ function init() {
 
     posts = [
         {   
-            "id" : "post1",
-            "title": "Post1",
-            "date": "07/23/21",
-            "summary": "Today I worked on my assignment for my CSE 134 class"
-        },
-        {
             "id" : "post2",
             "title": "Post2",
             "date": "07/25/21",
+            "summary": "Today I worked on my assignment for my CSE 134 class"
+        },
+        {
+            "id" : "post1",
+            "title": "Post1",
+            "date": "07/23/21",
             "summary": "My EDS 124BR Class is very interesting, we are learning about computational thinking."
         },  
     ]
 
-    localStorage.setItem("post1", `Title: ${posts[0].title} Date: ${posts[0].date} Summary: ${posts[0].summary}`);
-    localStorage.setItem("post2", `Title: ${posts[1].title} Date: ${posts[1].date} Summary: ${posts[1].summary}`);
+    localStorage.setItem(posts[0].id, JSON.stringify(posts[0]));
+    localStorage.setItem(posts[1].id, JSON.stringify(posts[1]));
+    // localStorage.setItem("post1", `Title: ${posts[0].title} Date: ${posts[0].date} Summary: ${posts[0].summary}`);
+    // localStorage.setItem("post2", `Title: ${posts[1].title} Date: ${posts[1].date} Summary: ${posts[1].summary}`);
 
     displayLocalPosts();
 
 }
 
 function displayPost(post) {
-
-    console.log(post);
+    console.log(post)
     postCount++;
     let postItem = document.createElement('li');
     postItem.id = post[0];
+    console.log(post[1]);
+    let postInfo = JSON.parse(post[1]);
+    console.log(postInfo.title);
 
-    let postInfo = document.createElement('p');
-    postInfo.textContent = post[1];
+    let postTitle = document.createElement('p');
+    postTitle.className = "titles";
+    postTitle.textContent = postInfo.title;
 
-    postItem.appendChild(postInfo);
+    let postDate = document.createElement('p');
+    postDate.className = "dates"
+    postDate.textContent = postInfo.date;
+
+    let postSummary = document.createElement('p');
+    postSummary.className = "summaries"
+    postSummary.textContent = postInfo.summary;
+
+    postItem.appendChild(postTitle);
+    postItem.appendChild(postDate);
+    postItem.appendChild(postSummary);
 
     let editBtn = document.createElement('button');
     editBtn.id = "editUser" + postCount;
-    editBtn.textContent = "Edit";
     editBtn.addEventListener("click", editPost);
     postItem.appendChild(editBtn);
 
     let delBtn = document.createElement('button');
     delBtn.id = "delUser" + postCount;
-    delBtn.textContent = "Delete";
     delBtn.addEventListener("click", delPost);
     postItem.appendChild(delBtn);
 
@@ -74,33 +85,28 @@ function newPost() {
 function cancelPost() {
     let postDialog = document.getElementById("addPostDialog");
     postDialog.close();
-    alert("Post cancelled")
 }
 
 function cancelEditPost() {
     let postDialog = document.getElementById("editPostDialog");
     editPostDialog.close();
-    alert("Editing Post cancelled");
 }
 
 function savePost() {
 
     
     //read values
-    let postDialog = document.getElementById("addPostDialog");
-    let postTitle = document.getElementById("title").value;
-    let postDate = document.getElementById("date").value;
-    let postSummary = document.getElementById("summary").value;
+    let newDialog = document.getElementById("addPostDialog");
+    let newTitle = document.getElementById("title").value;
+    let newDate = document.getElementById("date").value;
+    let newSummary = document.getElementById("summary").value;
 
     //TODO: Need to DOMPurify
-    postTitle = DOMPurify.sanitize(postTitle);
-    postDate = DOMPurify.sanitize(postDate);
-    postSummary = DOMPurify.sanitize(postSummary);
-    console.log(postTitle);
-    console.log(postDate);
-    console.log(postSummary);
+    newTitle = DOMPurify.sanitize(newTitle);
+    newDate = DOMPurify.sanitize(newDate);
+    newSummary = DOMPurify.sanitize(newSummary);
 
-    if(postTitle == "" || postDate == "" || postSummary == "") {
+    if(newTitle == "" || newDate == "" || newSummary == "") {
         alert("User has not entered all required information");
         postDialog.close();
     }
@@ -110,26 +116,35 @@ function savePost() {
     postItem.id = "post" + postCount;
 
     let entry = {
-        id: postItem.id,
-        title: postTitle,
-        date: postDate,
-        summary: postSummary,
+        "id": postItem.id,
+        "title": newTitle,
+        "date": newDate,
+        "summary": newSummary,
     }
-    console.log(entry);
     posts.push(entry);
 
     //display values
 
-    let postInfo = document.createElement('p');
-    let template = `Title: ${postTitle} Date: ${postDate} Summary: ${postSummary}`
-    postInfo.textContent = template;
+    let postTitle = document.createElement('p');
+    postTitle.className = "titles";
+    postTitle.textContent = newTitle;
 
-    console.log(postInfo.textContent)
-    postItem.appendChild(postInfo);
+    let postDate = document.createElement('p');
+    postDate.className = "dates"
+    postDate.textContent = newDate;
+
+    let postSummary = document.createElement('p');
+    postSummary.className = "summaries"
+    postSummary.textContent = newSummary;
+
+    postItem.appendChild(postTitle);
+    postItem.appendChild(postDate);
+    postItem.appendChild(postSummary);
 
     let editBtn = document.createElement('button');
     editBtn.id = "editUser" + postCount;
     editBtn.textContent = "Edit";
+    editBtn.className = "fa fa-"
     editBtn.addEventListener("click", editPost);
     postItem.appendChild(editBtn);
 
@@ -140,19 +155,18 @@ function savePost() {
     postItem.appendChild(delBtn);
 
     document.getElementById("postList").appendChild(postItem);
+    console.log(JSON.stringify(entry));
 
-    localStorage.setItem(postItem.id, template);
+    localStorage.setItem(postItem.id, JSON.stringify(entry));
     
     //close dialog box
-    alert("post added");
-    postDialog.close();
+    newDialog.close();
 
 }
 
 function saveExistingPost(postId) {
 
     editPostDialog.close();
-    alert("Post edited");
     let currPostIndex = posts.findIndex(x => x.id === postId);
 
     posts[currPostIndex].title = document.getElementById('editTitle').value;
@@ -166,8 +180,10 @@ function saveExistingPost(postId) {
 
 function editPost() {
     postId = this.parentNode.id;
-
+    console.log(postId);
+    console.log(posts);
     let currPost = posts.find(x => x.id === postId)
+    console.log(currPost)
 
     document.getElementById('editTitle').value = currPost.title;
     document.getElementById('editDate').value = currPost.date;
@@ -194,5 +210,6 @@ function delPost() {
     this.previousSibling.removeEventListener("click", editPost);
     //list item
     this.parentNode.parentNode.removeChild(postId);
+    console.log(this.parentNode.id);
     window.localStorage.removeItem(this.parentNode.id);
 }
